@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `stinsonmaas.com`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://www.stinsonmaas.com`,
   },
   plugins: [],
 }

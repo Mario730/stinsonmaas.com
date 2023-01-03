@@ -1,11 +1,9 @@
 import * as React from 'react'
-import { Link } from 'gatsby'
 import {
   container,
   heading,
   navLinks,
-  navLinkItem,
-  navLinkText
+  split
 } from './layout.module.css'
 
 const Layout = ({ pageTitle, children }) => {
@@ -13,22 +11,19 @@ const Layout = ({ pageTitle, children }) => {
     <div className={container}>
       <nav>
         <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/about" className={navLinkText}>
-              About
-            </Link>
-          </li>
+          <li><a href="/">home</a></li>
+          <li><a href="/about">about</a></li>
+          <li><a href="/resume">resume</a></li>
+          <li class={split}><a href="/contact">contact me!</a></li>
         </ul>
       </nav>
       <main>
         <h1 className={heading}>{pageTitle}</h1>
         {children}
       </main>
+      <footer>
+
+      </footer>
     </div>
   )
 }
