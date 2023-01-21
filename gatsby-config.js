@@ -3,8 +3,11 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `stinsonmaas.com`,
+    title: `Mario Stinson-Maas`,
     siteUrl: `https://www.stinsonmaas.com`,
   },
-  plugins: [],
+  plugins: [
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+  ],
 }
