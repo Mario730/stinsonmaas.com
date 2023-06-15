@@ -11,6 +11,6 @@ const ContactPage = () => {
   )
 }
 
-export const Head = () => <Seo title="Contact"/>
+export const Head = () => <Seo title="Contact Me"/>
 
 export default ContactPage
