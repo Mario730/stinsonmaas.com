@@ -5,7 +5,8 @@ import Seo from '../components/seo'
 const ContactPage = () => {
   return (
     <Layout pageTitle = "Contact">
-      <p>include: github, email, phone #?</p>
+      <p>Email: mario@stinsonmaas.com</p>
+      <p>Github: <a href="https://github.com/Mario730">Mario730</a></p>
     </Layout>
   )
 }

@@ -2,9 +2,11 @@ import * as React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import {
   container,
-  heading,
+  // heading,
   navLinks,
-  split
+  split,
+  currentPage,
+  logo
 } from './layout.module.css'
 
 const Layout = ({ pageTitle, children }) => {
@@ -17,19 +19,30 @@ const Layout = ({ pageTitle, children }) => {
       }
     }
   `)
+
+  function PageLinkTest({ page, link}) {
+    if (page === pageTitle) {
+      return <li><a href={link} className={currentPage}>{page}</a></li>;
+    } else return <li><a href={link}>{page}</a></li>;
+  }
+
+  function SplitPageLinkTest({ page, link}) {
+    if (page === pageTitle) {
+      return <li className={split}><a href={link} className={currentPage}>{page}</a></li>;
+    } else return <li className={split}><a href={link}>{page}</a></li>;
+  }
   
   return (
     <div className={container}>
       <nav>
+        <a href="/" className={logo}>Mario<br/>Stinson-Maas</a>
         <ul className={navLinks}>
-          <li><a href="/">home</a></li>
-          <li><a href="/about">about</a></li>
-          <li><a href="/resume">resume</a></li>
-          <li class={split}><a href="/contact">contact me!</a></li>
+          <PageLinkTest page="About" link="/about" />
+          <PageLinkTest page="Resume" link="/resume" />
+          <SplitPageLinkTest page="Contact" link="/contact" />
         </ul>
       </nav>
       <main>
-        <h1 className={heading}>{pageTitle}</h1>
         {children}
       </main>
       <footer>
