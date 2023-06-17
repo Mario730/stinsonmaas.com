@@ -31,7 +31,7 @@
 nav {
   height: 10rem;
   width: 100%;
-  background-image: linear-gradient(to right, #00080e, #381a4b);
+  background-image: linear-gradient(to right, #612785, #71289f);
   /* background-size: cover; */
   /* background-repeat: no-repeat; */
   font-family: 'New Rodin';
@@ -84,8 +84,9 @@ nav {
   font-weight: bold;
   align-items: center;
   text-align: left;
+  /* text-shadow: black .5rem .5rem; */
   text-decoration: none;
-  background: linear-gradient(to bottom right, #a90ada, #eda655) 0 0 / cover no-repeat;
+  background: linear-gradient(to bottom right, #8e08b7, #eda655) 0 0 / cover no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import {
   container,
   // heading,
@@ -10,32 +10,23 @@ import {
 } from './layout.module.css'
 
 const Layout = ({ pageTitle, children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
 
   function PageLinkTest({ page, link}) {
     if (page === pageTitle) {
-      return <li><a href={link} className={currentPage}>{page}</a></li>;
-    } else return <li><a href={link}>{page}</a></li>;
+      return <li><Link to={link} className={currentPage}>{page}</Link></li>;
+    } else return <li><Link to={link}>{page}</Link></li>;
   }
 
   function SplitPageLinkTest({ page, link}) {
     if (page === pageTitle) {
-      return <li className={split}><a href={link} className={currentPage}>{page}</a></li>;
-    } else return <li className={split}><a href={link}>{page}</a></li>;
+      return <li className={split}><Link to={link} className={currentPage}>{page}</Link></li>;
+    } else return <li className={split}><Link to={link}>{page}</Link></li>;
   }
   
   return (
     <div className={container}>
       <nav>
-        <a href="/" className={logo}>Mario<br/>Stinson-Maas</a>
+        <Link to="/" className={logo}>Mario<br/>Stinson-Maas</Link>
         <ul className={navLinks}>
           <PageLinkTest page="About" link="/about" />
           <PageLinkTest page="Resume" link="/resume" />
