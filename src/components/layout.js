@@ -28,6 +28,7 @@ const Layout = ({ pageTitle, children }) => {
       <nav>
         <Link to="/" className={logo}>Mario<br/>Stinson-Maas</Link>
         <ul className={navLinks}>
+          <PageLinkTest page="Posts" link="/post" />
           <PageLinkTest page="About" link="/about" />
           <PageLinkTest page="Resume" link="/resume" />
           <SplitPageLinkTest page="Contact" link="/contact" />
