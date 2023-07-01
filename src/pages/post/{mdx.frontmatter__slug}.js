@@ -7,6 +7,8 @@ const PostPage = ({ data, children }) => {
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <p>{data.mdx.frontmatter.date}</p>
+      <h1>{data.mdx.frontmatter.title}</h1>
+      <br/>
       {children}
     </Layout>
   )
