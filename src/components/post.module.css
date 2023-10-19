@@ -1,0 +1,16 @@
+.post-links {
+  margin: 2em 2em;
+  padding: 1em 2em;
+  border: .1em solid black;
+  border-radius: .3em;
+  display: flex;
+  text-decoration: none;
+  height: 10em;
+  width: 10em;
+}
+.post-list {
+  /* display: inline; */
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+}

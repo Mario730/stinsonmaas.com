@@ -3,20 +3,22 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../../components/layout'
 import Seo from '../../components/seo'
 import {
-
+  postLinks,
+  postList,
 } from '../../components/post.module.css'
 
 const PostsPage = ({ data }) => {
   return (
     <Layout pageTitle = "Posts">
-      <ul>
+      <ul className={postList}>
       {
         data.allMdx.nodes.map((node) => (
-          <article key={node.id}>
-            <h2><Link to={`/post/${node.frontmatter.slug}`}>{node.frontmatter.title}</Link></h2>
+          <Link to={`/post/${node.frontmatter.slug}`} key={node.id} className={postLinks}>
+            <h2>{node.frontmatter.title}</h2>
             <p>Posted: {node.frontmatter.date}</p>
+            <br />
             <p>{node.excerpt}</p>
-          </article>
+          </Link>
         ))
       }
       </ul>
