@@ -29,7 +29,7 @@ const Layout = ({ pageTitle, children }) => {
         <ul className={navLinks}>
           <PageLinkTest page="Posts" link="/post" />
           <PageLinkTest page="About" link="/about" />
-          <PageLinkTest page="Resume" link="/resume" />
+          {/* <PageLinkTest page="Resume" link="/resume" /> */}
           <SplitPageLinkTest page="Contact" link="/contact" />
         </ul>
       </nav>

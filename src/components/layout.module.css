@@ -70,6 +70,7 @@ nav {
   /* background-color: #232323; */
   /* box-shadow: 8px 8px; */
 }
+
 .logo {
   float: left;
   /* padding: 1.5rem; */
@@ -98,6 +99,7 @@ nav {
 main {
   padding: 5rem;
   font-size: 1.2em;
-  float: left;
+  width: 100%;
+  height: 100%;
   color: black;
 }
