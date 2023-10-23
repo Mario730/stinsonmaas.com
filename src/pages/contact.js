@@ -8,7 +8,8 @@ const linkStyles = {
     listStyle:"none",
     display:"grid",
     gridTemplateColumns:"repeat(2, 1fr)",
-    height:"10%"
+    height:"10%",
+    maxHeight:"10%"
   },
   listItem: {
     margin:"auto",
