@@ -2,26 +2,39 @@ import * as React from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../../components/layout'
 import Seo from '../../components/seo'
-import {
-  postLinks,
-  postLinkText
-} from '../../components/post.module.css'
 
 const PostsPage = ({ data }) => {
   return (
     <Layout pageTitle="Posts">
-      <ul className={postLinks}>
+      <h1>Blog Posts</h1>
+      <p style={{ marginBottom: '2rem' }}>
+        Thoughts on projects, music, code, and everything in between.
+      </p>
+
+      <div className="projects-grid">
         {data.allMdx.nodes.map((node) => (
-          <li key={node.id}>
-            <Link to={`/post/${node.frontmatter.slug}`} className={postLinkText}>
-              <h2>{node.frontmatter.title}</h2>
-              <p>Posted: {node.frontmatter.date}</p>
-              {/* <br /> */}
-              {/* <p>{node.excerpt}</p> */}
+          <article key={node.id} className="project-card">
+            <Link
+              to={`/post/${node.frontmatter.slug}`}
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <h3 style={{ color: '#612785', marginBottom: '0.5rem' }}>
+                {node.frontmatter.title}
+              </h3>
+              <p style={{ color: '#888', fontSize: '0.9em', marginBottom: '0.75rem' }}>
+                {node.frontmatter.date} &middot; {node.fields?.timeToRead || 1} min read
+              </p>
+              <p style={{ color: '#555' }}>
+                {node.excerpt}
+              </p>
             </Link>
-          </li>
+          </article>
         ))}
-      </ul>
+      </div>
+
+      {data.allMdx.nodes.length === 0 && (
+        <p>No posts yet. Check back soon!</p>
+      )}
     </Layout>
   )
 }
@@ -35,13 +48,16 @@ export const query = graphql`
           title
           slug
         }
-        excerpt(pruneLength: 250)
+        excerpt(pruneLength: 150)
         id
+        fields {
+          timeToRead
+        }
       }
     }
   }
 `
 
-export const Head = () => <Seo title="Posts"/>
+export const Head = () => <Seo title="Posts" pathname="/post" />
 
 export default PostsPage

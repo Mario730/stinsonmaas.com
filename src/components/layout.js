@@ -5,39 +5,61 @@ import {
   navLinks,
   split,
   currentPage,
-  logo
+  logo,
+  skipLink
 } from './layout.module.css'
 
 const Layout = ({ pageTitle, children }) => {
-
-  function PageLinkTest({ page, link}) {
-    if (page === pageTitle) {
-      return <li><Link to={link} className={currentPage}>{page}</Link></li>;
-    } else return <li><Link to={link}>{page}</Link></li>;
+  function PageLink({ page, link }) {
+    const isActive = page === pageTitle
+    return (
+      <li>
+        <Link
+          to={link}
+          className={isActive ? currentPage : undefined}
+          aria-current={isActive ? "page" : undefined}
+        >
+          {page}
+        </Link>
+      </li>
+    )
   }
 
-  function SplitPageLinkTest({ page, link}) {
-    if (page === pageTitle) {
-      return <li className={split}><Link to={link} className={currentPage}>{page}</Link></li>;
-    } else return <li className={split}><Link to={link}>{page}</Link></li>;
+  function SplitPageLink({ page, link }) {
+    const isActive = page === pageTitle
+    return (
+      <li className={split}>
+        <Link
+          to={link}
+          className={isActive ? currentPage : undefined}
+          aria-current={isActive ? "page" : undefined}
+        >
+          {page}
+        </Link>
+      </li>
+    )
   }
-  
+
   return (
     <div className={container}>
-      <nav>
-        <Link to="/" className={logo}>Mario<br/>Stinson-Maas</Link>
+      <a href="#main-content" className={skipLink}>Skip to content</a>
+      <nav role="navigation" aria-label="Main navigation">
+        <Link to="/" className={logo} aria-label="Mario Stinson-Maas - Home">
+          Mario<br/>Stinson-Maas
+        </Link>
         <ul className={navLinks}>
-          <PageLinkTest page="Posts" link="/post" />
-          <PageLinkTest page="About" link="/about" />
-          {/* <PageLinkTest page="Resume" link="/resume" /> */}
-          <SplitPageLinkTest page="Contact" link="/contact" />
+          <PageLink page="Posts" link="/post" />
+          <PageLink page="About" link="/about" />
+          <PageLink page="Projects" link="/projects" />
+          <PageLink page="Resume" link="/resume" />
+          <SplitPageLink page="Contact" link="/contact" />
         </ul>
       </nav>
-      <main>
+      <main id="main-content" role="main">
         {children}
       </main>
-      <footer>
-
+      <footer role="contentinfo">
+        <p>{new Date().getFullYear()} Mario Stinson-Maas</p>
       </footer>
     </div>
   )
