@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.stinsonmaas.com/sitemap-index.xml
+Host: https://www.stinsonmaas.com
