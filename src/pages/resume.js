@@ -54,19 +54,27 @@ const ResumePage = () => {
           >
             Download PDF
           </a>
-          <span style={{ color: '#666', fontSize: '0.9em' }}>
+          {/* <span style={{ color: '#666', fontSize: '0.9em' }}>
             (Add your resume.pdf to the static folder)
-          </span>
+          </span> */}
         </p>
 
         <ResumeSection title="Education">
+        <ResumeItem
+            title="New Mexico State University"
+            subtitle="Ph.D. in Mathematics"
+            date="August 2025 - Present"
+          >
+            {/* <ul style={{ paddingLeft: '1.5rem', color: '#555' }}>
+              <li>Relevant coursework: Data Structures, Algorithms, Abstract Algebra, Real Analysis, Linear Algebra</li>
+            </ul> */}
+          </ResumeItem>
           <ResumeItem
             title="Oberlin College"
             subtitle="B.A. in Computer Science and Mathematics (Double Major)"
             date="August 2021 - May 2025"
           >
             <ul style={{ paddingLeft: '1.5rem', color: '#555' }}>
-              <li>Graduated with Honors in Mathematics</li>
               <li>Relevant coursework: Data Structures, Algorithms, Abstract Algebra, Real Analysis, Linear Algebra</li>
             </ul>
           </ResumeItem>
@@ -97,7 +105,7 @@ const ResumePage = () => {
           </div>
         </ResumeSection>
 
-        <ResumeSection title="Projects">
+        {/* <ResumeSection title="Projects">
           <ResumeItem
             title="Personal Portfolio Website"
             date="2023 - Present"
@@ -118,14 +126,14 @@ const ResumePage = () => {
               <li>Presented findings to faculty committee</li>
             </ul>
           </ResumeItem>
-        </ResumeSection>
-
+        </ResumeSection> */}
+{/* 
         <ResumeSection title="Interests">
           <p style={{ color: '#555' }}>
             Music composition and production, algorithm visualization, mathematical research,
             open-source software development, and continuous learning in emerging technologies.
           </p>
-        </ResumeSection>
+        </ResumeSection> */}
       </div>
     </Layout>
   )

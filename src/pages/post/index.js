@@ -8,7 +8,7 @@ const PostsPage = ({ data }) => {
     <Layout pageTitle="Posts">
       <h1>Blog Posts</h1>
       <p style={{ marginBottom: '2rem' }}>
-        Thoughts on projects, music, code, and everything in between.
+        Some of my recent projects.
       </p>
 
       <div className="projects-grid">

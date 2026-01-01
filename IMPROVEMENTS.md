@@ -1,285 +1,160 @@
 # Site Improvement Dashboard
 
-> Analysis of stinsonmaas.com - Generated December 2025
+> Analysis of stinsonmaas.com - Updated December 2025
 
 ---
 
 ## Quick Stats
 
-| Category | Status | Priority Items |
-|----------|--------|----------------|
-| Performance | Needs Work | 14MB image, no lazy loading |
-| SEO | Critical | Missing meta tags, sitemap, robots.txt |
-| Accessibility | Needs Work | No ARIA labels, missing landmarks |
-| Code Quality | Moderate | 12+ outdated packages |
-| Content | Limited | Only 2 blog posts, minimal About |
-| Features | Incomplete | No resume, projects, or contact form |
+| Category | Status | Notes |
+|----------|--------|-------|
+| Performance | Good | Image compressed (14MB → 152KB), StaticImage in use |
+| SEO | Good | Meta tags, sitemap, robots.txt all working |
+| Accessibility | Good | Skip link, ARIA labels, semantic HTML |
+| Code Quality | Good | Dependencies updated, clean architecture |
+| Content | Needs Work | Blog posts from 2023, missing resume PDF |
+| Features | Good | ArXiv integration, reading time, share buttons |
 
 ---
 
-## 1. Performance
+## Completed Improvements
 
-### Critical Issues
+### Performance
+- [x] Compressed `seniorpic.jpg` from 14MB to 152KB
+- [x] Using `StaticImage` component with blur placeholder
+- [x] Added `gatsby-plugin-manifest` and `gatsby-plugin-offline`
+- [x] Added `font-display: swap` to custom fonts
 
-| Issue | Impact | Fix |
-|-------|--------|-----|
-| `seniorpic.jpg` is 14MB | Slow page load | Compress to <500KB, use WebP |
-| Plain `<img>` tags | No optimization | Use Gatsby's `StaticImage` component |
-| No lazy loading | Wasted bandwidth | Gatsby Image handles this automatically |
-| Missing manifest | Not installable as PWA | Add `gatsby-plugin-manifest` |
-| Font loading | Flash of invisible text | Add `font-display: swap` |
+### SEO
+- [x] Expanded SEO component with Open Graph and Twitter cards
+- [x] Added `gatsby-plugin-sitemap` and `gatsby-plugin-robots-txt`
+- [x] Complete `siteMetadata` configuration
+- [x] Canonical URLs on all pages
 
-### Recommendations
+### Accessibility
+- [x] Skip-to-content link with proper focus handling
+- [x] Semantic HTML (`<nav>`, `<main>`, `<article>`, `<footer>`)
+- [x] `aria-current="page"` on navigation
+- [x] Focus-visible styles throughout
+- [x] Proper alt text on images
 
-```bash
-# Install missing plugins
-npm install gatsby-plugin-manifest gatsby-plugin-offline
-```
-
-Replace in components:
-```jsx
-// Before
-<img src="../static/seniorpic.jpg" alt="Senior pic" />
-
-// After
-import { StaticImage } from "gatsby-plugin-image"
-<StaticImage src="../static/seniorpic.jpg" alt="Mario Stinson-Maas portrait" />
-```
-
----
-
-## 2. SEO
-
-### Current State: Minimal
-
-The SEO component (`src/components/seo.js`) only renders a `<title>` tag.
-
-### Missing Elements
-
-- [ ] Meta description
-- [ ] Open Graph tags (og:title, og:description, og:image)
-- [ ] Twitter Card tags
-- [ ] Canonical URLs
-- [ ] robots.txt
-- [ ] XML sitemap
-- [ ] JSON-LD structured data
-
-### Recommendations
-
-```bash
-npm install gatsby-plugin-sitemap gatsby-plugin-robots-txt
-```
-
-Update `gatsby-config.js`:
-```javascript
-siteMetadata: {
-  title: `Mario Stinson-Maas`,
-  description: `Portfolio of Mario Stinson-Maas - CS & Math student at Oberlin College`,
-  siteUrl: `https://www.stinsonmaas.com`,
-  author: `Mario Stinson-Maas`,
-  image: `/seniorpic.jpg`
-}
-```
+### Features
+- [x] ArXiv research database with build-time fetching
+- [x] Filter by year and category on Research page
+- [x] Blog reading time estimates
+- [x] Social share buttons (Twitter, LinkedIn)
+- [x] Responsive mobile design
+- [x] Resume page with structured layout
 
 ---
 
-## 3. Accessibility
+## Remaining Issues
 
-### Issues Found
+### Critical
 
 | Issue | Location | Fix |
 |-------|----------|-----|
-| No `aria-current="page"` | Navigation | Add to active link |
-| No skip-to-content link | Layout | Add at top of page |
-| Minimal alt text | Images | Use descriptive text |
-| Empty footer | Layout | Remove or add content |
-| No focus states | CSS | Add `:focus-visible` styles |
-| Missing landmarks | All pages | Use `<nav>`, `<main>`, `<article>` |
+| Missing resume.pdf | `/static/` | Add actual PDF file for download button |
+| LinkedIn logo oversized | `/static/linkedinlogo.png` | Resize from 2048x2048 to 256x256 (saves ~75KB) |
+| Blog screenshot large | `/static/ss1.png` | Compress or convert to WebP (currently 876KB) |
 
-### Quick Fixes
+### High Priority
 
-```jsx
-// Navigation - add aria-current
-<Link to="/about" aria-current={isActive ? "page" : undefined}>About</Link>
+| Issue | Location | Fix |
+|-------|----------|-----|
+| No JSON-LD schemas | `seo.js` | Add Person, Article, BreadcrumbList schemas |
+| Stale blog content | `/posts/` | Add recent posts (last posts from June 2023) |
+| Contact form not functional | `contact.js` | Connect to Formspree or similar service |
+| Commented dead code | `index.js`, `resume.js` | Clean up or remove |
 
-// Skip link - add to Layout
-<a href="#main-content" className="skip-link">Skip to content</a>
-<main id="main-content">...</main>
-```
+### Medium Priority
 
----
-
-## 4. Code Quality
-
-### Outdated Dependencies
-
-| Package | Current | Latest |
-|---------|---------|--------|
-| gatsby | 5.3.2 | 5.15.0 |
-| gatsby-plugin-mdx | 5.11.0 | 5.15.0 |
-| gatsby-plugin-sharp | 5.4.0 | 5.15.0 |
-| gatsby-plugin-image | 3.4.0 | 3.15.0 |
-| react | 18.2.0 | 18.3.1 |
-| react-dom | 18.2.0 | 18.3.1 |
-
-### Other Issues
-
-- [ ] No TypeScript (all JavaScript)
-- [ ] Inconsistent styling (CSS modules + inline styles)
-- [ ] Hardcoded contact links
-- [ ] Unused commented code in Layout.js
-
-### Recommendation
-
-```bash
-npm update
-npm audit fix
-```
+| Issue | Impact | Fix |
+|-------|--------|-----|
+| 404 page inconsistent | Minor UX | Wrap with Layout component |
+| No blog categories UI | Discoverability | Add tag/category filter to posts page |
+| No search functionality | Usability | Add client-side search |
+| Hard-coded social URLs | Maintainability | Extract to config file |
 
 ---
 
-## 5. Content
+## Recommended Actions
 
-### Current State
+### Immediate (Do Now)
 
-| Content | Status |
-|---------|--------|
-| Blog posts | 2 posts (June 2023) |
-| About page | ~1 sentence |
-| Resume | Commented out |
-| Projects | None |
+1. **Add resume.pdf** to `/static/` folder
+   - Download button currently points to non-existent file
 
-### Content Needed
+2. **Resize LinkedIn logo**
+   ```bash
+   sips --resampleWidth 256 static/linkedinlogo.png
+   ```
 
-- [ ] Expanded About page (3-5 paragraphs)
-  - Education details
-  - Skills & expertise
-  - Career interests
-  - Resume download
-- [ ] Projects showcase (3-5 featured projects)
-- [ ] Resume/CV page
-- [ ] More blog posts (establish posting schedule)
-- [ ] Blog post excerpts on listing page
+3. **Clean up commented code** in:
+   - `src/pages/index.js` (lines 31-89)
+   - `src/pages/resume.js` (multiple sections)
 
----
+### Short-term (This Week)
 
-## 6. Design/UX
+1. **Add JSON-LD structured data** to SEO component:
+   - Person schema on homepage
+   - Article schema on blog posts
 
-### Responsiveness Issues
+2. **Optimize blog images**:
+   - Compress `ss1.png` or convert to WebP
+   - Add descriptive alt text
 
-| Component | Issue |
-|-----------|-------|
-| Homepage grid | Fixed `2fr 1fr` - breaks on mobile |
-| Contact grid | Fixed 2-column - breaks on mobile |
-| Navigation | No hamburger menu for mobile |
+3. **Connect contact form** to backend:
+   - Sign up at [Formspree](https://formspree.io)
+   - Update form action URL in `contact.js`
 
-### Missing UX Features
+### Medium-term
 
-- [ ] Breadcrumbs on blog posts
-- [ ] "Back to Posts" button
-- [ ] Loading states/animations
-- [ ] Focus states for keyboard nav
-
-### Fix Example
-
-```css
-/* Add to layout.module.css */
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-}
-```
+1. **Add recent blog content** - posts are from June 2023
+2. **Implement blog tag filtering** - data exists, UI needed
+3. **Add analytics** - Google Analytics or Plausible
+4. **Set up security headers** - CSP, X-Frame-Options
 
 ---
 
-## 7. Missing Features
+## File Status
 
-### Priority Matrix
-
-| Priority | Feature | Effort |
-|----------|---------|--------|
-| P0 | Resume page | Medium |
-| P0 | Projects page | Medium |
-| P0 | Contact form | Low |
-| P1 | Blog reading time | Low |
-| P1 | Categories/tags | Medium |
-| P2 | Dark mode toggle | Medium |
-| P2 | Search | High |
-| P3 | Comments | High |
-| P3 | Newsletter signup | Medium |
-| P3 | Social share buttons | Low |
-
----
-
-## 8. Security
-
-### Action Items
-
-- [ ] Run `npm audit` and fix vulnerabilities
-- [ ] Update all dependencies to latest patch versions
-- [ ] Add Content Security Policy headers
-- [ ] Configure security headers (X-Frame-Options, etc.)
-
-```bash
-# Check for vulnerabilities
-npm audit
-
-# Auto-fix what's possible
-npm audit fix
-```
+| File | Status | Notes |
+|------|--------|-------|
+| `gatsby-config.js` | Good | All plugins configured |
+| `gatsby-node.js` | Good | ArXiv fetching + reading time |
+| `src/components/seo.js` | Good | Add JSON-LD schemas |
+| `src/components/layout.js` | Good | Clean, accessible |
+| `src/components/layout.module.css` | Good | Responsive, well-organized |
+| `src/pages/index.js` | Needs cleanup | Remove commented sections |
+| `src/pages/projects.js` | Good | ArXiv integration working |
+| `src/pages/resume.js` | Needs cleanup | Remove comments, add PDF |
+| `src/pages/contact.js` | Needs work | Connect form backend |
+| `src/pages/post/*.js` | Good | Reading time, share buttons |
+| `static/linkedinlogo.png` | Needs resize | 2048x2048 → 256x256 |
+| `static/ss1.png` | Needs compress | 876KB is too large |
 
 ---
 
-## Implementation Roadmap
+## Scorecard
 
-### Phase 1: Critical (Do First)
-1. Update all Gatsby plugins to v5.15.0
-2. Replace `<img>` with `StaticImage`
-3. Compress seniorpic.jpg to <500KB
-4. Add robots.txt and sitemap plugins
-5. Expand SEO component with meta tags
-6. Add mobile responsive media queries
+| Category | Score | Status |
+|----------|-------|--------|
+| Performance | 8/10 | Minor image optimizations remaining |
+| SEO | 7/10 | Add JSON-LD schemas |
+| Accessibility | 8/10 | Strong foundation |
+| Code Quality | 7/10 | Clean up commented code |
+| Content | 5/10 | Needs fresh blog posts |
+| Design/UX | 8/10 | Professional, responsive |
+| Features | 8/10 | ArXiv integration is excellent |
 
-### Phase 2: High Priority (Do Soon)
-1. Expand About page content
-2. Create Resume page
-3. Create Projects page
-4. Add contact form (Formspree/Netlify Forms)
-5. Add accessibility improvements
-
-### Phase 3: Polish
-1. Add blog reading time
-2. Implement categories/tags
-3. Add dark mode toggle
-4. TypeScript migration
-
-### Phase 4: Nice-to-Have
-1. Analytics integration
-2. Social share buttons
-3. Newsletter signup
-4. Comments system
-
----
-
-## File-by-File Issues
-
-| File | Issues | Priority |
-|------|--------|----------|
-| `gatsby-config.js` | Missing SEO plugins, incomplete metadata | High |
-| `src/components/seo.js` | Only renders title, missing meta tags | High |
-| `src/components/layout.js` | No semantic HTML, missing a11y | High |
-| `src/pages/index.js` | Non-responsive grid, unoptimized image | High |
-| `src/pages/about.js` | Content too minimal | High |
-| `src/pages/contact.js` | Non-responsive, hardcoded links | Medium |
-| `src/components/layout.module.css` | No mobile queries | Medium |
-| `package.json` | Outdated dependencies | High |
+**Overall: 7.3/10** - Solid portfolio with modern features. Main gaps are content freshness and minor cleanup tasks.
 
 ---
 
 ## Resources
 
-- [Gatsby Image Plugin Docs](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/)
-- [Gatsby SEO Guide](https://www.gatsbyjs.com/docs/how-to/adding-common-features/adding-seo-component/)
-- [Web Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
-- [Lighthouse Performance Auditing](https://developer.chrome.com/docs/lighthouse/)
+- [Gatsby Image Plugin](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/)
+- [JSON-LD Schema Generator](https://technicalseo.com/tools/schema-markup-generator/)
+- [Formspree](https://formspree.io) - Easy form backend
+- [Squoosh](https://squoosh.app) - Image compression

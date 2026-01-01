@@ -490,6 +490,94 @@ footer a:hover {
   color: white;
 }
 
+/* Filter Controls (Research page) */
+:global(.filter-controls) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+}
+
+:global(.filter-group) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+:global(.filter-group label) {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 0.95rem;
+}
+
+:global(.filter-select) {
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+}
+
+:global(.filter-select:focus) {
+  border-color: #5a2d82;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(90, 45, 130, 0.1);
+}
+
+:global(.results-count) {
+  margin-left: auto;
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+/* Paper-specific card styles */
+:global(.paper-card) {
+  display: flex;
+  flex-direction: column;
+}
+
+:global(.paper-authors) {
+  color: #5a2d82 !important;
+  font-size: 0.9rem !important;
+  font-weight: 500;
+  margin-bottom: 0.25rem !important;
+}
+
+:global(.paper-date) {
+  color: #718096 !important;
+  font-size: 0.85rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+:global(.paper-abstract) {
+  flex: 1;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+}
+
+:global(.no-papers) {
+  text-align: center;
+  padding: 3rem;
+  color: #718096;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   nav {
@@ -554,6 +642,26 @@ footer a:hover {
 
   :global(.share-buttons) {
     flex-wrap: wrap;
+  }
+
+  :global(.filter-controls) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  :global(.filter-group) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  :global(.filter-select) {
+    width: 100%;
+  }
+
+  :global(.results-count) {
+    margin-left: 0;
+    text-align: center;
   }
 }
 

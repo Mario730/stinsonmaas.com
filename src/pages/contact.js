@@ -13,7 +13,8 @@ const ContactPage = () => {
 
       <h2>Email</h2>
       <p>
-        <a href="mailto:mario@stinsonmaas.com">mario@stinsonmaas.com</a>
+        Personal - <a href="mailto:mario@stinsonmaas.com">mario@stinsonmaas.com</a><br />
+        School - <a href="mailto:mariosm@nmsu.edu">mariosm@nmsu.edu</a>
       </p>
 
       <h2>Connect</h2>
@@ -41,53 +42,6 @@ const ContactPage = () => {
           </a>
         </li>
       </ul>
-
-      <h2>Send a Message</h2>
-      <form
-        className="contact-form"
-        action="https://formspree.io/f/your-form-id"
-        method="POST"
-      >
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            placeholder="Your name"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            placeholder="your@email.com"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            required
-            placeholder="Your message..."
-          />
-        </div>
-        <button type="submit" className="submit-btn">
-          Send Message
-        </button>
-      </form>
-      <p style={{ marginTop: '1rem', fontSize: '0.9em', color: '#666' }}>
-        Note: To enable this form, sign up at{' '}
-        <a href="https://formspree.io" target="_blank" rel="noopener noreferrer">
-          Formspree
-        </a>{' '}
-        and replace "your-form-id" with your actual form ID.
-      </p>
     </Layout>
   )
 }

@@ -49,8 +49,7 @@ const Layout = ({ pageTitle, children }) => {
         </Link>
         <ul className={navLinks}>
           <PageLink page="Posts" link="/post" />
-          <PageLink page="About" link="/about" />
-          <PageLink page="Projects" link="/projects" />
+          <PageLink page="Research" link="/projects" />
           <PageLink page="Resume" link="/resume" />
           <SplitPageLink page="Contact" link="/contact" />
         </ul>
@@ -59,7 +58,7 @@ const Layout = ({ pageTitle, children }) => {
         {children}
       </main>
       <footer role="contentinfo">
-        <p>{new Date().getFullYear()} Mario Stinson-Maas</p>
+        <p>{new Date().getFullYear()}; Mario Stinson-Maas</p>
       </footer>
     </div>
   )
