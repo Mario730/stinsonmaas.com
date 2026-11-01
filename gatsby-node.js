@@ -26,7 +26,7 @@ exports.sourceNodes = async ({
 }) => {
   const { createNode } = actions
 
-  const ARXIV_API_URL = 'http://export.arxiv.org/api/query'
+  const ARXIV_API_URL = 'https://export.arxiv.org/api/query'
   const searchQuery = 'au:Stinson-Maas'
   const maxResults = 100
 
